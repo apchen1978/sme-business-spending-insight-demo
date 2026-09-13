@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Spending Insight · 企業支出決策啟發</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="brand-mark">BI</span><span>Business Spending Insight</span></div><span class="mode">LOCAL · SHADOW</span></header>
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">SME OWNER TOOL · HUMAN-GOVERNED</p>
+          <h1>讓老闆更懂得<br><em>怎麼花公司的錢。</em></h1>
+          <p class="lede">在支出決定前後，先多看一眼現金、效益、時間、證據與專業問題。不是記帳工具，也不是替你報稅。</p>
+          <div class="boundary"><strong>一個更好的問題</strong><span>我花的這筆錢，還有什麼商業影響是我可能沒想到的？</span></div>
+        </div>
+        <aside class="hero-visual" aria-label="企業支出決策思考鏡頭">
+          <div class="hero-visual-top"><span>THE OWNER LENS</span><span>BEFORE THE ANSWER</span></div>
+          <div class="hero-visual-title">先看一眼<br><em>再做決定。</em></div>
+          <p class="hero-visual-caption">把一筆支出放回完整的商業脈絡，讓下一個問題更值得問。</p>
+          <div class="lens-list">
+            <div><b>01</b><span>現金</span><small>什麼時候流出去？</small></div>
+            <div><b>02</b><span>效益</span><small>要改善哪一件事？</small></div>
+            <div><b>03</b><span>時間</span><small>何時開始產生影響？</small></div>
+            <div><b>04</b><span>證據</span><small>還需要留下什麼？</small></div>
+            <div><b>05</b><span>確認</span><small>要帶什麼問專業人士？</small></div>
+          </div>
+          <div class="hero-visual-foot"><span>INSIGHT FIRST</span><span>JUDGMENT STAYS HUMAN</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="decision-start" aria-labelledby="start-title">
+      <div class="section-intro"><p class="eyebrow">START HERE · 從你的決定開始</p><h2 id="start-title">你現在是哪一種情況？</h2><p>選一個入口，或先看合成案例了解完整流程。</p></div>
+      <div class="mode-grid">
+        <button class="mode-card" data-mode="considering" type="button"><span class="mode-number">01</span><strong>我正在考慮這筆支出</strong><small>花錢前，先想清楚現金、預期效益與可能缺口。</small><span class="mode-cta">開始思考 →</span></button>
+        <button class="mode-card" data-mode="spent" type="button"><span class="mode-number">02</span><strong>我已經花了這筆錢</strong><small>花錢後，把實際用途、證據與要問專業人士的問題整理好。</small><span class="mode-cta">開始整理 →</span></button>
+      </div>
+      <button id="loadSample" class="sample-link" type="button">先看一個完整合成案例：辦公室整修 NT$600,000 ↗</button>
+    </section>
+
+    <section id="workspace" class="workspace hidden" aria-labelledby="input-title">
+      <div class="section-head"><div><p class="eyebrow">YOUR SPENDING DECISION</p><h2 id="input-title">用一句話描述這筆錢</h2></div><span id="modeLabel" class="mode-label"></span></div>
+      <p class="hint">例如：「公司準備花 NT$600,000 做辦公室整修。」先寫你知道的事實，不確定的地方可以留白。</p>
+      <form id="spendingForm">
+        <label>支出描述<input id="description" required placeholder="例如：公司準備花 NT$600,000 做辦公室整修"></label>
+        <div class="form-row"><label>金額（TWD）<input id="amount" type="number" min="0" step="1" placeholder="600000"></label><label>公司目前最在意什麼？<select id="focus"><option value="unknown">尚未確認</option><option value="cash">現金與流動性</option><option value="benefit">預期營運效益</option><option value="timing">今年與未來的時間影響</option><option value="evidence">資料與文件是否完整</option></select></label></div>
+        <button class="primary" type="submit">產生 Owner Insight <span>→</span></button>
+      </form>
+      <p class="synthetic-note">LOCAL SHADOW PROTOTYPE · 輸入與案例均為示範用途</p>
+    </section>
+
+    <section id="result" class="result hidden" aria-labelledby="result-title">
+      <div class="result-head"><div><p class="eyebrow">OWNER INSIGHT · 先理解</p><h2 id="result-title">老闆多想一步</h2></div><span class="synthetic">SYNTHETIC / HYPOTHETICAL</span></div>
+      <div id="insightBody" class="insight-body"></div>
+      <div class="next-strip"><strong>下一步</strong><span>把這些事實與問題帶給 CPA 或相關專業人士，請他們判斷個案。</span></div>
+      <details class="professional-detail"><summary>需要更深入？查看 Professional Handoff</summary><div id="professionalBody"></div></details>
+      <button id="tryAgain" class="secondary" type="button">再試一筆支出</button>
+    </section>
+
+    <section class="armory" aria-labelledby="armory-title"><p class="eyebrow">OWNER ARMORY · 可帶走的思考</p><h2 id="armory-title">六個容易被忽略的角度</h2><div class="armory-grid"><article><strong>花錢 ≠ 當期費用</strong><span>現金流出與損益影響可能發生在不同時間。</span></article><article><strong>價格低 ≠ 對公司最划算</strong><span>付款條件、品質、交付與後續成本也值得看。</span></article><article><strong>有發票 ≠ 故事完整</strong><span>支出發生了，仍要說清楚它如何支援業務。</span></article><article><strong>現在方便 ≠ 未來沒有代價</strong><span>維護、續約、切換與人力成本也可能影響決定。</span></article><article><strong>有優惠名稱 ≠ 公司符合資格</strong><span>資格與適用條件必須由專業人士確認。</span></article><article><strong>未知不是沒有風險</strong><span>不知道的地方先被標出來，才知道下一個問題。</span></article></div></section>
+  </main>
+  <footer>Business Spending Insight v0.1 · Local prototype · No tax advice · No real taxpayer data</footer>
+  <script src="app.js"></script>
+</body>
+</html>
