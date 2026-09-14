@@ -147,6 +147,30 @@ footer { padding: 0 24px 38px; color: var(--muted); font-size: 12px; text-align:
   .next-strip span { display: block; margin-top: 6px; }
 }
 
+/* --- Optimization pass: lenses, derived amount, copy summary, handoff blocks --- */
+
+.lens-card { grid-column: 1 / -1; min-height: 0; }
+.lens-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 11px; }
+.lens-chips b { padding: 5px 12px; border: 1px solid var(--pine-2); color: var(--pine); font-size: 12px; font-weight: 740; letter-spacing: .01em; }
+.lens-note { color: var(--muted); font-size: 12px; }
+.amount-note { grid-column: 1 / -1; margin: 6px 0 0; color: #6b5420; font-size: 12px; line-height: 1.5; }
+
+/* The result panel is dark pine, so the default .secondary colors would be invisible on it. */
+.result-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+.result-actions .secondary { margin-top: 0; border-color: rgb(246 244 237 / 46%); color: var(--ivory); }
+.result-actions .secondary:hover { background: rgb(246 244 237 / 12%); }
+.result-actions .copy-action { border-color: #e1bb65; color: #e1bb65; font-weight: 760; }
+.result-actions .copy-action:hover { background: rgb(225 187 101 / 14%); }
+.copy-status { margin: 11px 0 0; min-height: 1.2em; color: #c8d4ca; font-size: 12px; }
+
+.professional-block { margin-top: 17px; padding-top: 15px; border-top: 1px solid rgb(246 244 237 / 18%); }
+.professional-block span { display: block; color: #b9c7bd; font-size: 11px; }
+.professional-block p { margin: 8px 0 0; line-height: 1.72; }
+.professional-block ul { margin: 8px 0 0; padding-left: 19px; }
+.professional-block li { margin: 5px 0; }
+.professional-note { margin: 17px 0 0; color: #b9c7bd; font-size: 12px; line-height: 1.6; }
+.professional-note code { color: #e1bb65; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }

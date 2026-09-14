@@ -50,16 +50,33 @@ Secondary questions: Was the insight understood? Was it actionable? Was it too a
 
 ## Known limitations
 
-The insight logic is a deliberately small local heuristic, not an AI model or legal rules engine. It uses the description and selected focus to generate educational wording. It has not been validated by real SME owners or CPAs. No external data, API, persistence, authentication, or production deployment is included.
+The insight logic is a deliberately small local heuristic, not an AI model or legal rules engine. It matches the description against a fixed set of spending lenses and produces educational wording. It has not been validated by real SME owners or CPAs. No external data, API, persistence, authentication, or backend service is included.
+
+Lens matching is keyword-based. If a description uses vocabulary outside the lens patterns, it falls back to the generic lens (stated on screen as「一般支出」); the fallback is intentional and disclosed rather than guessed.
+
+## Optimization pass (2026-09-14, DSH, Owner-authorized)
+
+| Change | Before | After |
+|---|---|---|
+| Spending coverage | 3 keyword buckets (asset / meal / software); many common SME expenses fell to generic wording — e.g. 辦公室網路升級 | **14 lenses** (場地與工程、設備與機具、軟體與訂閱、維修與保養、餐敘與招待、行銷與推廣、運費與報關、專業服務、訓練與課程、差旅、研發與試驗、租金與場地費、保險、人事與獎金) + disclosed generic fallback |
+| Multiple lenses | One bucket won; the others were silently dropped (e.g. 研發用電腦設備 lost the R&D angle) | **All matching lenses are shown** as chips, and their questions are combined — no silent overwrite |
+| Amount entry | Blank amount → 「金額尚未填寫」 even when the description contained 60 萬 | Blank amount is derived from the description (60 萬 / 1,200,000 / 80000) and **labelled** as derived; a typed amount always wins |
+| CPA handoff | One generic paragraph | Case-specific blocks: facts to bring, documents to bring, the question to ask, **and what the tool deliberately did not do** |
+| New: copy summary | — | 「複製摘要（帶去問 CPA）」 copies a plain-text brief for the meeting |
+| Contrast fix | `.secondary` used pine text on the pine result panel → 「再試一筆支出」 was effectively **invisible** (≈1:1) | Panel-aware button colours: **10.75:1**; copy action 6.48:1 |
+
+Verified locally in a real browser: 16 description cases lens-routed correctly; mobile 390px no horizontal overflow; 0 console errors; blank-description guard still releasable after rejection; user text escaped (no markup execution). No tax threshold, rate, or eligibility rule was added or invented.
 
 ## Evidence status
 
-- `PROTOTYPE_IMPLEMENTATION`: pending local validation
-- `DESIGN VALIDATED INTERNALLY`: yes, pending final smoke test
-- `OWNER_INSIGHT`: not human validated
+- `PROTOTYPE_IMPLEMENTATION`: **verified locally** (this optimization pass)
+- `DESIGN VALIDATED INTERNALLY`: yes
+- `OWNER REVIEW`: Owner reviewed the prototype and judged it usable (2026-09-14); this is **not** target-user validation
+- `OWNER_INSIGHT`: not human validated (no real SME sample)
 - `CPA HANDOFF`: not human validated
 - `PUBLIC_OUTCOME_CLAIMS`: not validated
 
 ## Exactly one next action
 
-Run one Owner BEFORE / AFTER test with the synthetic office-renovation case and record whether the Owner added a useful consideration that was absent before the insight.
+Run one Owner BEFORE / AFTER test with the synthetic office-renovation case and record whether the Owner added a useful consideration that was absent before the insight; then ask a real CPA whether this one-page brief would shorten the first conversation.
+
