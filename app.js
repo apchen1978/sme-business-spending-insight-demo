@@ -265,7 +265,7 @@ function renderInsight() {
   $("result-title").textContent = copy[state.mode].action;
   $("insightBody").innerHTML = `<div class="insight-hero"><span class="insight-chip">${esc(copy[state.mode].label)}</span><h3>${esc(description)}</h3><strong>${esc(insight.amountText)}</strong>${amountNote}</div><div class="insight-sections">${lensCard}<article><span>發生了什麼？</span><p>${esc(insight.happened)}</p></article><article><span>為什麼值得注意？</span><p>${esc(insight.why)}</p></article><article class="cash-card"><span>現金與費用可能不是同一件事嗎？</span><p>${esc(insight.cash)}</p></article><article><span>老闆多想一步</span><ul>${insight.think.map(x => `<li>${esc(x)}</li>`).join("")}</ul></article><article><span>值得留下什麼？</span><ul>${insight.keep.map(x => `<li>${esc(x)}</li>`).join("")}</ul></article><article class="ask-card"><span>值得問 CPA／專業人士什麼？</span><p>${esc(insight.ask)}</p></article></div>`;
 
-  $("professionalBody").innerHTML = `<div class="professional-grid"><div><span>模式</span><strong>${esc(copy[state.mode].label)}</strong></div><div><span>金額</span><strong>${esc(insight.amountText)}${amountSource === "derived" ? "（由描述推得）" : ""}</strong></div><div><span>狀態</span><strong>NEEDS PROFESSIONAL REVIEW</strong></div></div><div class="professional-block"><span>要帶去的事實</span><p>${esc(description)}</p></div><div class="professional-block"><span>建議一併帶去的文件／紀錄</span><ul>${insight.keep.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div><div class="professional-block"><span>要請對方判斷的問題</span><p>${esc(insight.ask)}</p></div><div class="professional-block"><span>本工具刻意沒有做的事</span><ul><li>沒有判定可扣除、稅務分類或優惠資格</li><li>沒有計算或保證節稅金額</li><li>沒有決定折舊、攤銷或認列時點</li><li>沒有產生任何申報數字</li></ul></div><p class="professional-note">這個 prototype 只把 Owner Insight 轉成可交接的專業問題；<code>VERIFIED RULE ≠ CASE ELIGIBILITY VERIFIED</code>。</p>`;
+  $("professionalBody").innerHTML = `<div class="professional-grid"><div><span>模式</span><strong>${esc(copy[state.mode].label)}</strong></div><div><span>金額</span><strong>${esc(insight.amountText)}${amountSource === "derived" ? "（由描述推得）" : ""}</strong></div><div><span>狀態</span><strong>NEEDS PROFESSIONAL REVIEW</strong></div></div><div class="professional-block"><span>要帶去的事實</span><p>${esc(description)}</p></div><div class="professional-block"><span>建議一併帶去的文件／紀錄</span><ul>${insight.keep.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div><div class="professional-block"><span>要請對方判斷的問題</span><p>${esc(insight.ask)}</p></div><div class="professional-block"><span>本工具刻意沒有做的事</span><ul><li>沒有判定可扣除、稅務分類或優惠資格</li><li>沒有計算或保證節稅金額</li><li>沒有決定折舊、攤銷或認列時點</li><li>沒有產生任何申報數字</li></ul></div><p class="professional-note">這個原型只把老闆洞察轉成可交接的專業問題；<code>VERIFIED RULE ≠ CASE ELIGIBILITY VERIFIED</code>。</p>`;
 
   $("result").classList.remove("hidden");
   $("copyStatus").textContent = "";
@@ -349,7 +349,7 @@ $("loadSample").addEventListener("click", () => {
 
 $("copySummary").addEventListener("click", async () => {
   const text = summaryText();
-  if (!text) { $("copyStatus").textContent = "請先產生 Owner Insight。"; return; }
+  if (!text) { $("copyStatus").textContent = "請先產生老闆洞察。"; return; }
   let ok = false;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     try { await navigator.clipboard.writeText(text); ok = true; } catch (error) { ok = false; }
